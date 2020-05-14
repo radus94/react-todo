@@ -1,46 +1,7 @@
-
 import React, { useState, useReducer } from 'react'
+import TodoForm from "./components/AddTodo";
+import Todo from "./components/TodoItem";
 import reducer from './reducer'
-
-
-function Todo({todo, index, completeTodo, deleteTodo}) {
-    return (
-        <li
-            className="todo"
-        >
-            <label>
-                <input
-                    type="checkbox"
-                    defaultChecked={todo.isCompleted}
-                    onClick={() => completeTodo(index)}
-                />
-                <span>{todo.title}</span>
-            </label>
-            <i className="material-icons red-text" onClick={() => deleteTodo(index)}>delete</i>
-        </li>
-    )
-}
-
-function TodoForm({addTodo}) {
-    const [value, setValue] = useState('');
-    const handleSubmit = e => {
-        e.preventDefault();
-        if(!value) return;
-        addTodo(value);
-        setValue('');
-    }
-    return (
-        <form className="input-field" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                className="input"
-                value={value}
-                placeholder="Add todo..."
-                onChange={e=>setValue(e.target.value)} />
-            <label>Todo name</label>
-        </form>
-    )
-}
 
 export default function App() {
 
